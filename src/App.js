@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {render} from 'react-dom';
+import HomePage from './component/Home'
 
 class App extends React.Component {
 
@@ -34,14 +35,15 @@ class App extends React.Component {
         }
         return (
             <div className="App">
-                <h1>National Park DashBoard</h1>
-                <input className="state" type="text"></input>
-
-  
+                <React.Fragment>
+                    <HomePage />
+                </React.Fragment>
             </div>
 
         );
     }
 }
+
+
 
 export default App;
