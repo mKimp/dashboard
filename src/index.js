@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import HomePage from './component/Home'
+import Chart from './component/Chart'
 
-ReactDOM.render(<App />,
+ReactDOM.render(<HomePage />,
   document.getElementById('root')
 );
 
