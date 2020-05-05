@@ -1,6 +1,7 @@
 import React from 'react';
-import data from './data/data.json';
-import DashBoard from './Dashboard';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class HomePage extends React.Component {
     }
       
     render() {
+        /*
         return (
           <form onSubmit={
             this.handleSubmit}>
@@ -25,11 +27,25 @@ class HomePage extends React.Component {
               type="text"
               placeholder="Search..."
               value={this.props.textChange}
-              onChange={this.handleTextChange}
+              onChange={this.handleTextChange} required
             />
-            <input type="submit" value='Submit'></input>
-          </form>
-        );
+            <Button variant="primary" type="submit">Submit</Button>          
+            </form>
+        );*/
+        return (
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh',  backgroundImage: "url(" + "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" + ")",
+    }}>
+
+            <Form  onSubmit={
+            this.handleSubmit}>
+                <Form.Group controlId="my-form">
+                    <h1>Enter The State Name:</h1>
+                    <Form.Control type="text" placeholder="Searching" value={this.props.textChange}
+              onChange={this.handleTextChange} required/>
+                </Form.Group>
+                <Button variant="primary" type="submit">Submit</Button>
+            </Form> 
+        </div>)
       }
     }
     

@@ -7,10 +7,12 @@ class Chart extends React.Component{
     }
     
     render(){
-        return (
+        return ( /*
             <div className="chart">
-               
-            </div>
+               <Bar data={this.state.chartData}
+               options={{}} />
+            </div>*/
+            <div>Chart</div>
 
         )
     }

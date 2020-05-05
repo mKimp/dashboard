@@ -9,7 +9,6 @@ import App from './component/App';
 
 
 
-
 ReactDOM.render(<App data={data}/>,
   document.getElementById('root')
 );
