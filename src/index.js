@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import HomePage from './component/Home'
 import Chart from './component/Chart'
+import data from './component/data/data.json';
+import App from './component/App';
 
-ReactDOM.render(<HomePage />,
+
+
+
+ReactDOM.render(<App data={data}/>,
   document.getElementById('root')
 );
 

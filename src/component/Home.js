@@ -1,6 +1,40 @@
 import React from 'react';
 import data from './data/data.json';
+import DashBoard from './Dashboard';
 
+class HomePage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+    handleTextChange(e) {
+        this.props.onTextChange(e.target.value);
+    }
+    
+    handleSubmit(e) {
+        this.props.onSubmitChange();
+    }
+      
+    render() {
+        return (
+          <form onSubmit={
+            this.handleSubmit}>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={this.props.textChange}
+              onChange={this.handleTextChange}
+            />
+            <input type="submit" value='Submit'></input>
+          </form>
+        );
+      }
+    }
+    
+
+/*
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
@@ -53,7 +87,7 @@ class HomePage extends React.Component {
             this.setState({parks: json})
         } catch (error) {
             console.log(error);
-        }*/
+        }
     }
 
     render() {
@@ -81,7 +115,7 @@ class HomePage extends React.Component {
                     </form>
                 ) : (
                     <div> {
-                        this.state.parks.length == 0 ? console.log("WAITING") : console.log("RETRN " + this.state.parks[0])
+                        this.state.parks.length == 0 ? console.log("WAITING") : <DashBoard /> //console.log("RETRN " + this.state.parks[0])
                     } </div>
                 )
             } </div>
@@ -90,5 +124,5 @@ class HomePage extends React.Component {
 
     }
 }
-
+*/
 export default HomePage;
