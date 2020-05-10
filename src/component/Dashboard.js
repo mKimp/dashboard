@@ -1,6 +1,7 @@
 import React from 'react';
 import Chart from './Chart';
-
+import Navigation from './NavigationBar'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 class DashBoard extends React.Component {
     constructor(props) {
         super(props);
@@ -9,7 +10,11 @@ class DashBoard extends React.Component {
         const data = this.props.data; 
 
         return (
-            <Chart data={data}/>
+            <React.Fragment>
+            <Navigation />
+            
+
+            </React.Fragment>
         )
   
         

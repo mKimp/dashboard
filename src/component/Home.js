@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import Background from './images/bg.jpg';
+import './Home.css'
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -13,13 +15,12 @@ class HomePage extends React.Component {
     handleTextChange(e) {
         this.props.onTextChange(e.target.value);
     }
-    
+
     handleSubmit(e) {
         this.props.onSubmitChange();
     }
-      
-    render() {
-        /*
+
+    render() { /*
         return (
           <form onSubmit={
             this.handleSubmit}>
@@ -33,22 +34,30 @@ class HomePage extends React.Component {
             </form>
         );*/
         return (
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh',  backgroundImage: "url(" + "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" + ")",
-    }}>
-
-            <Form  onSubmit={
-            this.handleSubmit}>
-                <Form.Group controlId="my-form">
-                    <h1>Enter The State Name:</h1>
-                    <Form.Control type="text" placeholder="Searching" value={this.props.textChange}
-              onChange={this.handleTextChange} required/>
-                </Form.Group>
-                <Button variant="primary" type="submit">Submit</Button>
-            </Form> 
-        </div>)
-      }
+            <React.Fragment>
+                <div className="Home">
+                    <h1 className="text-center">National Parks DashBoard </h1>
+                    <Form onSubmit={
+                        this.handleSubmit
+                    }>
+                        <Form.Group controlId="my-form">
+                            <Form.Control type="text" placeholder="Entering a state ..."
+                                value={
+                                    this.props.textChange
+                                }
+                                onChange={
+                                    this.handleTextChange
+                                }
+                                required/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit">Submit</Button>
+                    </Form>
+                </div>
+            </React.Fragment>
+        )
     }
-    
+}
+
 
 /*
 class HomePage extends React.Component {
