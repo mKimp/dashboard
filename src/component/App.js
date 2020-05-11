@@ -11,7 +11,8 @@ class App extends React.Component {
             isLoaded: false,
             isValid: false,
             parkLabel: [],
-            parkSize: []
+            parkSize: [],
+            parkVisitors:[]
         }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -36,8 +37,16 @@ class App extends React.Component {
                 }).map(function (item) {
                     return item.area.acres
                 })
+
+                const visitors = this.props.data.filter(function (item) {
+                    return item.states[0].title == search
+                }).map(function (item) {
+                    return item.visitors
+                })
+
                 this.setState({isLoaded: true})
-                this.setState({parkLabel: parks, parkSize: parkSize})
+                this.setState({parkLabel: parks, parkSize: parkSize, parkVisitors: visitors })
+
             }
         });
     }
@@ -67,7 +76,8 @@ class App extends React.Component {
                     }
                     searchName={
                         this.state.searchText
-                    }/>
+                    }
+                    visitors={this.state.parkVisitors}/>
             )
         }
     }
