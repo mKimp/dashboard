@@ -1,13 +1,17 @@
 import React from 'react';
 import HomePage from './Home';
 import Dashboard from './Dashboard';
+import Alert from 'react-bootstrap/Alert';
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             searchText: '',
-            isLoaded: false
+            isLoaded: false,
+            isValid: false,
+            parkLabel: [],
+            parkSize: []
         }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -17,11 +21,31 @@ class App extends React.Component {
         this.setState({searchText: text})
     }
     handleSubmit() {
-        this.setState({isLoaded: true})
+        this.state.parkData = this.props.data.map((item) => item.states[0].title)
+        const search = this.state.searchText;
+
+        this.state.parkData.forEach(element => {
+            if (element == search) {
+                const parks = this.props.data.filter(function (item) {
+                    return item.states[0].title == search
+                }).map(function (item) {
+                    return item.title
+                })
+                const parkSize = this.props.data.filter(function (item) {
+                    return item.states[0].title == search
+                }).map(function (item) {
+                    return item.area.acres
+                })
+                this.setState({isLoaded: true})
+                this.setState({parkLabel: parks, parkSize: parkSize})
+            }
+        });
     }
     render() {
+
         if (!this.state.isLoaded) {
-            return (
+
+                return (
                 <div>
                     <HomePage textChange={
                             this.state.searchText
@@ -32,11 +56,19 @@ class App extends React.Component {
                         onSubmitChange={
                             this.handleSubmit
                         }/>
-                </div>
-            );
-        }
-        else{
-            return (<Dashboard data={this.props.data}/>)
+                </div> 
+            )} else {
+            return (
+                <Dashboard dataLabel={
+                        this.state.parkLabel
+                    }
+                    dataSize={
+                        this.state.parkSize
+                    }
+                    searchName={
+                        this.state.searchText
+                    }/>
+            )
         }
     }
 }

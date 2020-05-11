@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import HomePage from './component/Home'
-import Chart from './component/Chart'
 import data from './component/data/data.json';
 import App from './component/App';
 
-
-
+/*
+ReactDOM.render(<Chart data={data}/>,
+  document.getElementById('root')
+);
+*/
 ReactDOM.render(<App data={data}/>,
   document.getElementById('root')
 );
