@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bar, Line, Pine} from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
 
 class Chart extends React.Component {
     constructor(props) {
@@ -63,3 +63,4 @@ class Chart extends React.Component {
 }
 
 export default Chart;
+

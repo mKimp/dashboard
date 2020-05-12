@@ -12,7 +12,8 @@ class App extends React.Component {
             isValid: false,
             parkLabel: [],
             parkSize: [],
-            parkVisitors:[]
+            parkVisitors:[],
+            coordinates:[]
         }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -43,9 +44,15 @@ class App extends React.Component {
                 }).map(function (item) {
                     return item.visitors
                 })
+       
+                const cood = this.props.data.filter(function (item) {
+                    return item.states[0].title == search
+                }).map(function (item) {
+                    return item.coordinates
+                })
 
                 this.setState({isLoaded: true})
-                this.setState({parkLabel: parks, parkSize: parkSize, parkVisitors: visitors })
+                this.setState({parkLabel: parks, parkSize: parkSize, parkVisitors: visitors, coordinates:cood })
 
             }
         });
@@ -77,7 +84,9 @@ class App extends React.Component {
                     searchName={
                         this.state.searchText
                     }
-                    visitors={this.state.parkVisitors}/>
+                    visitors={this.state.parkVisitors}
+                    coordinates={this.state.coordinates}
+                    />
             )
         }
     }

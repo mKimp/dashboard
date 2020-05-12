@@ -7,10 +7,11 @@ import data from './component/data/data.json';
 import App from './component/App';
 
 /*
-ReactDOM.render(<Chart data={data}/>,
+ReactDOM.render(<SimpleExample/>,
   document.getElementById('root')
-);
-*/
+);*/
+
+
 ReactDOM.render(<App data={data}/>,
   document.getElementById('root')
 );
