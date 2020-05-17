@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import HomePage from './component/Home'
 import data from './component/data/data.json';
 import App from './component/App';
-
+import Mapp from './component/Map';
 /*
 ReactDOM.render(<SimpleExample/>,
   document.getElementById('root')
