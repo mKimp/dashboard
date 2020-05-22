@@ -17,6 +17,7 @@ class HomePage extends React.Component {
     }
 
     handleSubmit(e) {
+        e.preventDefault()
         this.props.onSubmitChange();
     }
 
@@ -42,9 +43,9 @@ class HomePage extends React.Component {
                     }>
                         <Form.Group controlId="my-form">
                             <Form.Control type="text" placeholder="Entering a state ..."
-                                value={
-                                    this.props.textChange
-                                }
+                              //  value={
+                               //     this.props.textChange
+                              //  }
                                 onChange={
                                     this.handleTextChange
                                 }

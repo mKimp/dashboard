@@ -18,23 +18,12 @@ class App extends React.Component {
             coodLabell:[],
             items:[],
             isLoaded:false
+    
         }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
 
     }
-    componentDidMount(){
-        fetch("https://developer.nps.gov/api/v1/parks?parkCode=&stateCode=&q=Yellowstone&api_key=ggkV9uIryYjb4jyp0qeVrwCwE5rObHy68Il8hhKD")
-        .then(res => res.json())
-        .then(
-            (result) => {
-                this.setState({isLoaded:true, items:result.data})
-            },
-            (error) => {
-                this.setState({isLoaded:true, error})
-            }
-        )
-      }
 
     handleTextChange(text) {
         this.setState({searchText: text})
@@ -85,24 +74,20 @@ class App extends React.Component {
             const title = element.title
             const cood = element.coordinates
             const  newData = {"title": title, "cood": [cood.latitude, cood.longitude], "description": element.description, "established": element.date_established_readable}; 
-            newArray.push(newData)
-
-        
-
-
-    //    this.state.parkData.forEach(element => {
-    //        if (element == search) {
-    //        }
-    //    })
+            newArray.push(newData) 
     })
-    this.setState({coodLabell:[...this.state.coodLabell,...newArray]})
-    
+    this.setState({coodLabell:[...this.state.coodLabell,...newArray]}) 
     
 }
 
  
 
     render() {
+
+        let count = 0;
+        this.props.data.forEach(element => {
+            ++count;
+        });
 
         if (!this.state.isLoaded) {
 
@@ -133,7 +118,7 @@ class App extends React.Component {
                     visitors={this.state.parkVisitors}
                     coordinates={this.state.coordinates}
                     coodLabell={this.state.coodLabell}
-                    totaldata ={this.props.data}
+                    totaldata ={count}
                     />
             )
         }

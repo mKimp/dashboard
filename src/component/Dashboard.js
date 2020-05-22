@@ -10,8 +10,7 @@ import {Col, Row} from "react-bootstrap";
 import VisitorChart from './VisitorsChart'
 import './Map.css'
 import {Map, TileLayer, Marker, Popup} from "react-leaflet";
-
-
+import PieChart from './PieChart'
 
 
 class DashBoard extends React.Component {
@@ -24,30 +23,20 @@ class DashBoard extends React.Component {
             parkVisitors: this.props.visitors,
             coordinate: this.props.coordinates,
             coodLabell: this.props.coodLabell,
-            items:[],
-            isLoaded:false
+            items: [],
+            isLoaded: false,
+            totalData: this.props.totaldata,
+            lat:0,
+            long:0
         })
 
     }
 
-    componentDidMount(){
-        fetch("https://developer.nps.gov/api/v1/parks?parkCode=&stateCode=&q=Yellowstone&api_key=ggkV9uIryYjb4jyp0qeVrwCwE5rObHy68Il8hhKD")
-        .then(res => res.json())
-        .then(
-            (result) => {
-                this.setState({isLoaded:true, items:result.data})
-            },
-            (error) => {
-                this.setState({isLoaded:true, error})
-            }
-        )
-      }
-  
-  
+
     render() {
-        
-      //  console.log(this.state.coodLabell[0].title + "" + this.state.searchName)
- /*       let newArray = []
+
+        // console.log(this.state.coodLabell[0].title + "" + this.state.searchName)
+        /*       let newArray = []
         const current = this.props.data.filter(function (item) {
                     return item.states[0].title === this.props.searchName
         })
@@ -59,13 +48,13 @@ class DashBoard extends React.Component {
 
         })
         console.log(newArray[0].cood) */
+        
 
+      
+ 
         const lat = this.state.coodLabell[0].cood[0];
         const long = this.state.coodLabell[0].cood[1];
-
-
-
-
+        const parkLength = this.state.parkLabel.length;
 
         const parkData = new Array(this.state.parkSize.length)
         for (let i = 0; i < this.state.parkSize.length; ++ i) {
@@ -73,7 +62,7 @@ class DashBoard extends React.Component {
             const result = parseFloat(comma)
             parkData[i] = result;
         }
-        
+
         const visitors = new Array(this.state.parkVisitors.length)
         for (let i = 0; i < this.state.parkVisitors.length; ++ i) {
             const comma = this.state.parkVisitors[i].replace(/,/g, '');
@@ -81,19 +70,12 @@ class DashBoard extends React.Component {
             visitors[i] = result;
         }
 
-        const {error, isLoaded, items} = this.state;
-        if(error){
-        return <div>Error: {error.message}</div>
-        }
-        else if (!isLoaded) {
-        return <div>Loading...</div> }
-        else {
-
-            console.log(this.state.items)
             return (
             <React.Fragment>
-                <Navigation/>
-                
+                <Navigation parkLabel={
+                    this.state.parkLabel
+                }/>
+
                 <Container>
                     <Row>
                         <Col md="6"><Chart parkLabel={
@@ -104,8 +86,6 @@ class DashBoard extends React.Component {
                                     this.state.searchName
                                 }/>
                         </Col>
-                    </Row>
-                    <Row>
                         <Col md="6">
                             <VisitorChart visitors={visitors}
                                 parkLabel={
@@ -115,31 +95,65 @@ class DashBoard extends React.Component {
                                     this.state.searchName
                                 }/>
                         </Col>
+
+                    </Row>
+                    <Row>
+                        <Col md="6"><PieChart parkLength={parkLength}
+                                totalData={
+                                    this.state.totalData
+                                }
+                                searchName={
+                                    this.state.searchName
+                                }/>
+                        </Col>
+                        
                         <Col md="6">
                             <div id="container">
-                             
-                            <Map center={[lat,long]} zoom={6}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          /> 
-          {this.state.coodLabell.map((item) => <Marker key={item.cood[0]} position={[item.cood[0], item.cood[1]]}> 
-                            <Popup position={[item.cood[0], item.cood[1]]}> <div><h2>{item.title}</h2><h2>{item.description}</h2></div> </Popup>
-          </Marker>)}             
-          </Map>
-                                
+
+                                <Map center={
+                                        [lat, long]
+                                    }
+                                    zoom={6}>
+                                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/> {
+                                    this.state.coodLabell.map((item) => <Marker key={
+                                            item.title
+                                        }
+                                        position={
+                                            [
+                                                item.cood[0], item.cood[1]
+                                            ]
+                                    }>
+                                        <Popup position={
+                                            [
+                                                item.cood[0], item.cood[1]
+                                            ]
+                                        }>
+                                            <div>
+                                                <h2> {
+                                                    item.title
+                                                }</h2>
+                                                <h2> {
+                                                    item.description
+                                                }</h2>
+                                            </div>
+                                        </Popup>
+                                    </Marker>)
+                                } </Map>
+
                             </div>
                         </Col>
                     </Row>
 
+
                 </Container>
-            </React.Fragment>
+            </React.Fragment>) 
+        } 
         
-                            
-        )}
+    
+    
 
 
-    }
+    
 
 
 }

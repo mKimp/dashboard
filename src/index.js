@@ -6,8 +6,9 @@ import HomePage from './component/Home'
 import data from './component/data/data.json';
 import App from './component/App';
 import Mapp from './component/Map';
+import Park from './component/Park'
 /*
-ReactDOM.render(<SimpleExample/>,
+ReactDOM.render(<Park/>,
   document.getElementById('root')
 );*/
 

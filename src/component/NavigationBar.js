@@ -4,7 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 class Navigation extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {parkLabel: this.props.parkLabel}
+    }
     render() {
+
         return (
             <Navbar collapseOnSelect expand="lg" bg="success" >
                 <Navbar.Brand href="/" >DashBoard</Navbar.Brand>
@@ -15,7 +20,7 @@ class Navigation extends React.Component {
                     </Nav>
                 </Navbar.Collapse>
                 <Form inline>
-                    <Form.Control type="text" placeholder="Searching A Park..." className=" mr-sm-2"/>
+                    <Form.Control type="text" placeholder="Searching A Park Information during COVID-19" className=" mr-sm-2"/>
                     <Button type="submit">Submit</Button>
                 </Form>
             </Navbar>
