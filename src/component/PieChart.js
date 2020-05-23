@@ -42,7 +42,7 @@ class PieChart extends React.Component {
                     {
                         title: {
                             display: this.props.searchName,
-                            text: "Percentage Comparasion"
+                            text: "Percentages"
                         },
                         legend: {
                             display: true,

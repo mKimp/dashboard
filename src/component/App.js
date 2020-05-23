@@ -17,7 +17,6 @@ class App extends React.Component {
             coordinates:[],
             coodLabell:[],
             items:[],
-            isLoaded:false
     
         }
         this.handleTextChange = this.handleTextChange.bind(this)
