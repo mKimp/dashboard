@@ -6,12 +6,14 @@ import HomePage from './component/Home'
 import data from './component/data/data.json';
 import App from './component/App';
 import Mapp from './component/Map';
-import Park from './component/Park'
 /*
 ReactDOM.render(<Park/>,
   document.getElementById('root')
 );*/
-
+/*
+ReactDOM.render(<Routerr data={data}/>,
+  document.getElementById('root')
+);*/
 
 ReactDOM.render(<App data={data}/>,
   document.getElementById('root')

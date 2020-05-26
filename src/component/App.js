@@ -1,8 +1,7 @@
 import React from 'react';
 import HomePage from './Home';
 import Dashboard from './Dashboard';
-import Alert from 'react-bootstrap/Alert';
-import update from 'react-addons-update';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -17,6 +16,7 @@ class App extends React.Component {
             coordinates:[],
             coodLabell:[],
             items:[],
+            alerts:[]
     
         }
         this.handleTextChange = this.handleTextChange.bind(this)
@@ -79,8 +79,6 @@ class App extends React.Component {
     
 }
 
- 
-
     render() {
 
         let count = 0;
@@ -88,6 +86,7 @@ class App extends React.Component {
             ++count;
         });
 
+        
         if (!this.state.isLoaded) {
 
                 return (

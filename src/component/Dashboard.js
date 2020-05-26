@@ -1,10 +1,8 @@
 import React from 'react';
 import Chart from './Chart';
 import Navigation from './NavigationBar'
-import Mapp from './Map'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import App from './App';
-import HomePage from './Home';
+import NavigationNoSearch from './NavigationNoSearch'
+
 import {Container} from 'react-bootstrap';
 import {Col, Row} from "react-bootstrap";
 import VisitorChart from './VisitorsChart'
@@ -12,7 +10,6 @@ import './Map.css'
 import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 import PieChart from './PieChart'
 import Park from './Park';
-import {Modal} from 'react-bootstrap'
 
 
 class DashBoard extends React.Component {
@@ -29,10 +26,12 @@ class DashBoard extends React.Component {
             isSearched: false,
             totalData: this.props.totaldata,
             searchText:'',
-            isLoaded: false
+            isLoaded: false,
+
         })
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSearchChange = this.handleSearchChange.bind(this)
 
     }
     handleTextChange(text) {
@@ -40,7 +39,14 @@ class DashBoard extends React.Component {
     }
     handleSubmit(e) {
         this.setState({isSearched:true})
-    }/*
+      //  document.getElementById("mySearchForm").reset()
+
+    }
+    handleSearchChange (){
+        this.setState({isSearched:false})
+    }
+    
+    /*
     componentDidMount() {
         let url = "https://developer.nps.gov/api/v1/parks?parkCode=&stateCode=&q=" + this.state.searchText + "&api_key=ggkV9uIryYjb4jyp0qeVrwCwE5rObHy68Il8hhKD"
         fetch(url).then(res => res.json()).then((result) => {
@@ -149,22 +155,19 @@ class DashBoard extends React.Component {
                 </Container>
             </React.Fragment>) 
         } 
-        
+     
     
     else{
         return(
             <React.Fragment>
-            <Navigation  textChange={
-                        this.state.searchText
-                    }
-                    onTextChange={
-                        this.handleTextChange
-                    }
-                    onSubmitChange={
-                        this.handleSubmit
-                    }/>
-            
-            <Park text={this.state.searchText} />
+            <NavigationNoSearch  
+                    onSearchChange={
+                        this.handleSearchChange} />
+              
+            <Park text={this.state.searchText} 
+                  //  onSearchChange={
+                  //      this.handleSearchChange} 
+                    /> 
        </React.Fragment>)
     }
     
