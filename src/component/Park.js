@@ -108,7 +108,7 @@ class Park extends React.Component {
                             <Col>
                                 <img style={
                                         {
-                                            height: '500px',
+                                            height: 'auto',
                                             width: '100%'
                                         }
                                     }
