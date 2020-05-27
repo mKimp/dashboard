@@ -13,7 +13,8 @@ class HomePage extends React.Component {
 
     }
     handleTextChange(e) {
-        this.props.onTextChange(e.target.value);
+        const text1 = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+        this.props.onTextChange(text1);
     }
 
     handleSubmit(e) {
@@ -42,7 +43,7 @@ class HomePage extends React.Component {
                         this.handleSubmit
                     }>
                         <Form.Group controlId="my-form">
-                            <Form.Control type="text" placeholder="Entering a state ..."
+                            <Form.Control type="text" placeholder="Enter the state name ... "
                               //  value={
                                //     this.props.textChange
                               //  }
@@ -50,6 +51,7 @@ class HomePage extends React.Component {
                                     this.handleTextChange
                                 }
                                 required/>
+                            <p style={{"fontSize": "15px", "color":"lawngreen"}}> <b> Example: 'California' </b></p>
                         </Form.Group>
                         <Button variant="primary" type="submit">Submit</Button>
                     </Form>

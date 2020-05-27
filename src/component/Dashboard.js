@@ -10,7 +10,8 @@ import './Map.css'
 import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 import PieChart from './PieChart'
 import Park from './Park';
-
+import Card from 'react-bootstrap/Card'
+import CardColumns from 'react-bootstrap/CardColumns'
 
 class DashBoard extends React.Component {
     constructor(props) {
@@ -35,11 +36,12 @@ class DashBoard extends React.Component {
 
     }
     handleTextChange(text) {
-        this.setState({searchText: text})
+        const text1 = text.charAt(0).toUpperCase() + text.slice(1);
+
+        this.setState({searchText: text1})
     }
     handleSubmit(e) {
         this.setState({isSearched:true})
-      //  document.getElementById("mySearchForm").reset()
 
     }
     handleSearchChange (){
@@ -71,9 +73,7 @@ class DashBoard extends React.Component {
         })
         console.log(newArray[0].cood) */
         
-
-      
- 
+        
         const lat = this.state.coodLabell[0].cood[0];
         const long = this.state.coodLabell[0].cood[1];
         const parkLength = this.state.parkLabel.length;
@@ -97,6 +97,8 @@ class DashBoard extends React.Component {
         if (!this.state.isSearched){
         return (
             <React.Fragment>
+
+
                 <Navigation  textChange={
                             this.state.searchText
                         }
@@ -108,25 +110,44 @@ class DashBoard extends React.Component {
                         }/>
                 <Container>
                     <Row>
-                        <Col md="6">
-                            <Chart parkLabel={this.state.parkLabel}
+                        <Col>
+                        <Card style={{'marginTop':'20px'}}>
+                            <Card.Header> <b> {this.state.searchName} {"National Parks"} </b> </Card.Header>
+                            <Card.Body>
+                            {<Chart parkLabel={this.state.parkLabel}
                                 parkSize={parkData}
-                                searchName={this.state.searchName}/>
+                                searchName={this.state.searchName}/>}
+
+                            </Card.Body>
+                        </Card>
+
                         </Col>
-                        <Col md="6">
-                            <VisitorChart visitors={visitors}
-                                parkLabel={this.state.parkLabel}
-                                searchName={this.state.searchName}/>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col md="6">
+                        <Col>
+                        <Card style={{'marginTop':'20px'}}>
+                            <Card.Header> <b>Compare to the total of US National Parks </b> </Card.Header>
+                            <Card.Body>
                             <PieChart parkLength={parkLength}
                                 totalData={this.state.totalData}
                                 searchName={this.state.searchName}/>
+                           
+                            </Card.Body>
+                        </Card>
+                       
                         </Col>
-                        <Col md="6">
-                            <div id="container">
+                    </Row>
+                    <Row>
+                        <Col>
+                        <Card style={{'marginTop':'20px', 'height':'340px'}}>
+                            <Card.Header> <b> Amount of Visitors </b></Card.Header>
+                            <Card.Body>
+                            <VisitorChart visitors={visitors}
+                                parkLabel={this.state.parkLabel}
+                                searchName={this.state.searchName}/>
+                            </Card.Body>
+                        </Card>
+                           
+                        </Col>
+                        <Col>
                                 <Map center={[lat, long]} zoom={6}>
                                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/> {
@@ -148,8 +169,8 @@ class DashBoard extends React.Component {
                                     </Popup>
                                     </Marker>)} 
                                 </Map>
-
-                            </div>
+     
+                          
                         </Col>
                     </Row>
                 </Container>
@@ -160,15 +181,16 @@ class DashBoard extends React.Component {
     else{
         return(
             <React.Fragment>
+              
             <NavigationNoSearch  
                     onSearchChange={
                         this.handleSearchChange} />
-              
             <Park text={this.state.searchText} 
                   //  onSearchChange={
                   //      this.handleSearchChange} 
                     /> 
-       </React.Fragment>)
+       </React.Fragment>
+    )
     }
     
 

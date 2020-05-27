@@ -54,8 +54,6 @@ class Park extends React.Component {
         this.setState({
             modalIsOpen: !this.state.modalIsOpen
         })
-        document.getElementById("mySearchForm").reset()
-        this.props.onSearchChange();
     }
     /*
     fetchParkCode(code){
@@ -70,9 +68,28 @@ class Park extends React.Component {
         const {error, isLoaded, items} = this.state;
         const {errorA, isAlertLoaded, alerts} = this.state;
         if (error) {
-            return <div>Error: {
-                error.message
-            }</div>
+            return (
+                <Modal show={
+                    this.state.modalIsOpen
+                }>
+                    <Modal.Header>
+                        <Modal.Title>You could misspell the park name?</Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        <p>{
+                            error.message
+                        }</p>
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button onClick={
+                                this.toggleModal
+                            }
+                            variant="secondary">Close</Button>
+                    </Modal.Footer>
+                </Modal>
+            ) // <div>Error: You could misspell the park name </div>
         } else if (!isLoaded) {
             return (
                 <Progress/>)
