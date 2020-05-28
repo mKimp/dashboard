@@ -45,6 +45,7 @@ class VisitorChart extends React.Component {
                         this.state.chartData
                     }
                     options={
+                        
                         {
                             title: {
                                 display: this.props.searchName,
@@ -54,8 +55,15 @@ class VisitorChart extends React.Component {
                                 display:true,
                                 position:"right"
                             }
-                        }
-                    }/>
+                        },
+                        {
+                            plugins: {
+                                datalabels: {
+                                   display: false,
+                                
+                            },
+                        },
+                    } }/>
             </div>
         )
     }

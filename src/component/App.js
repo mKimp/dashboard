@@ -2,7 +2,7 @@ import React from 'react';
 import HomePage from './Home';
 import Dashboard from './Dashboard';
 import {Modal, Alert, Button} from 'react-bootstrap'
-
+import AlertDismissible from './Alert'
 
 class App extends React.Component {
     constructor(props) {
@@ -19,7 +19,11 @@ class App extends React.Component {
             items: [],
             alerts: [],
             hasResult: false,
-            modalIsOpen: true
+            modalIsOpen: true,
+            correctstateName: false,
+            usstates:["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"],
+            visible: true
+
 
         }
         this.handleTextChange = this.handleTextChange.bind(this)
@@ -33,12 +37,23 @@ class App extends React.Component {
         })
     }
 
+    toggleAlert (){
+        this.setState({visible: !this.state.visible})
+
+    }
+
     handleTextChange(text) {
         this.setState({searchText: text})
     }
     handleSubmit(e) {
+
         const parkData = this.props.data.map((item) => item.states[0].title)
         const search = this.state.searchText;
+        this.state.usstates.forEach(element => {
+            if(element == search){
+                this.setState({correctstateName:true})
+            }
+        });
         this.setState({isLoaded: true})
 
         parkData.forEach(element => {
@@ -123,48 +138,16 @@ class App extends React.Component {
                         }/>
                 </div>
             )
-        } else if (this.state.isLoaded && !this.state.hasResult) {
+        } else if (this.state.isLoaded && !this.state.hasResult && !this.state.correctstateName) {
             console.log(this.state.isLoaded)
             console.log(this.state.hasResult)
-            return (
-                <React.Fragment>
-                    <Modal show={
-                        this.state.modalIsOpen
-                    }>
-                        <Modal.Header>
-                            <Modal.Title>Oops! Something is wrong</Modal.Title>
+            return (<AlertDismissible message={"You could misspell the state name?"}/> )
 
-                        </Modal.Header>
-
-                        <Modal.Body>
-                            <p>
-                                You could either misspell the state name OR the state does not have any National Parks
-                            </p>
-                        </Modal.Body>
-
-                        <Modal.Footer>
-                            <Button onClick={
-                                    this.toggleModal
-                                }
-                                variant="secondary">Close</Button>
-                        </Modal.Footer>
-                    </Modal>
-                    <div>
-                        <HomePage textChange={
-                                this.state.searchText
-                            }
-                            onTextChange={
-                                this.handleTextChange
-                            }
-                            onSubmitChange={
-                                this.handleSubmit
-                            }/>
-                    </div>
-
-                </React.Fragment>
-            )
-
-        } else {
+        } 
+        else if (this.state.isLoaded && this.state.correctstateName && !this.state.hasResult ) {
+           return (<AlertDismissible message={"Sorry, this state DOES NOT have any National Parks"}/> )
+     }
+        else {
 
             return (
                 <Dashboard dataLabel={

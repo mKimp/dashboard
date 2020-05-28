@@ -1,5 +1,6 @@
 import React from 'react';
 import {Doughnut} from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels'
 
 class PieChart extends React.Component {
     constructor(props) {
@@ -25,8 +26,8 @@ class PieChart extends React.Component {
                     label: 'Percentages',
                     data: compareData,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',       
+                        '#FB3640',
+                        '#43AA8B',       
                     ],
                     borderColor: [                  
                         'rgba(255, 99, 132, 1)',
@@ -39,16 +40,21 @@ class PieChart extends React.Component {
         return (<div className="chart">
             <Doughnut data={chartData}
                 options={
-                    {
-                        title: {
-                            display: this.props.searchName,
-                            text: "Percentages"
-                        },
-                        legend: {
-                            display: true,
-                            position: "bottom"
+                {
+                    plugins: {
+                        datalabels: {
+                           display: true,
+                           color: 'white',
+                           formatter:(value) =>{
+                            return value + "%"
                         }
+                    },
+                },
+                    legend: {
+                        display: true,
+                        position: "bottom"
                     }
+                }
                 }/>
         </div>)
     }

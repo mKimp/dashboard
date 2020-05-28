@@ -97,8 +97,7 @@ class DashBoard extends React.Component {
         if (!this.state.isSearched){
         return (
             <React.Fragment>
-
-
+                <div>
                 <Navigation  textChange={
                             this.state.searchText
                         }
@@ -108,6 +107,8 @@ class DashBoard extends React.Component {
                         onSubmitChange={
                             this.handleSubmit
                         }/>
+                </div>
+                <div style={{"backgroundColor":"DarkOliveGreen", "display": "flex", "justifyContent":"center", "alignItems":"center"}}>
                 <Container>
                     <Row>
                         <Col>
@@ -168,27 +169,28 @@ class DashBoard extends React.Component {
                                         </div>
                                     </Popup>
                                     </Marker>)} 
-                                </Map>
-     
-                          
+                                </Map>                     
                         </Col>
                     </Row>
                 </Container>
-            </React.Fragment>) 
-        } 
-     
-    
+                </div>
+                <footer style={{"backgroundColor": "whitesmoke", "textAlign":"center"}}>
+                    <p>Author: Kim Ma</p>
+                    <p><a href="mailto:pkm@pdx.edu">pkm@pdx.edu</a></p>
+                </footer>
+            </React.Fragment>
+            )} 
     else{
+
         return(
             <React.Fragment>
               
             <NavigationNoSearch  
                     onSearchChange={
                         this.handleSearchChange} />
-            <Park text={this.state.searchText} 
-                  //  onSearchChange={
-                  //      this.handleSearchChange} 
-                    /> 
+
+            <Park text={this.state.searchText} />
+
        </React.Fragment>
     )
     }

@@ -9,7 +9,7 @@ class Chart extends React.Component {
                 labels: this.props.parkLabel,
                 datasets: [
                     {
-                        label: 'Acres',
+                        label: 'Size in Acres',
                         data: this.props.parkSize,
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.6)',
@@ -45,17 +45,30 @@ class Chart extends React.Component {
                         this.state.chartData
                     }
                     options={
+                        {scales: {
+                            yAxes: [{
+                                ticks: {
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value, index, values) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }]
+                        }},
                         {
-                            title: {
-                                display: this.props.searchName,
-                                text: this.props.searchName + " National Park(s)"
+                            plugins: {
+                                datalabels: {
+                                   display: false,
+                                
                             },
-                            legend:{
-                                display:true,
-                                position:"right"
+                        },
+                            legend: {
+                                display: true,
+                                position: "top"
                             }
                         }
-                    }/>
+                        }
+                    />
             </div>
         )
     }
