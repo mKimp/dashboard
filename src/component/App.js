@@ -116,7 +116,6 @@ class App extends React.Component {
         this.props.data.forEach(element => {
             ++ count;
         });
-
         if (!this.state.isLoaded && !this.state.hasResult) {
             return (
                 <div>
