@@ -1,7 +1,6 @@
 import React from 'react';
 import HomePage from './Home';
 import Dashboard from './Dashboard';
-import {Modal, Alert, Button} from 'react-bootstrap'
 import AlertDismissible from './Alert'
 
 class App extends React.Component {
@@ -80,13 +79,9 @@ class App extends React.Component {
                 }).map(function (item) {
 
                     return item.coordinates
-                })
-                /*  const current = this.props.data.filter(function (item) {
-                    return item.states[0].title === search
-                })*/
-
+                })  
                 this.setState({hasResult: true})
-                this.setState({parkLabel: parks, parkSize: parkSize, parkVisitors: visitors, coordinates: cood}) // coodLabell:current })
+                this.setState({parkLabel: parks, parkSize: parkSize, parkVisitors: visitors, coordinates: cood})
             }
 
         });
@@ -114,8 +109,6 @@ class App extends React.Component {
                 ... newArray
             ]
         })
-
-
     }
 
     render() {
@@ -139,8 +132,7 @@ class App extends React.Component {
                 </div>
             )
         } else if (this.state.isLoaded && !this.state.hasResult && !this.state.correctstateName) {
-            console.log(this.state.isLoaded)
-            console.log(this.state.hasResult)
+
             return (<AlertDismissible message={"You could misspell the state name?"}/> )
 
         } 

@@ -138,7 +138,7 @@ class DashBoard extends React.Component {
                     </Row>
                     <Row>
                         <Col>
-                        <Card style={{'marginTop':'20px', 'height':'340px'}}>
+                        <Card style={{'marginTop':'20px', 'height':'370px'}}>
                             <Card.Header> <b> Amount of Visitors </b></Card.Header>
                             <Card.Body>
                             <VisitorChart visitors={visitors}
@@ -149,7 +149,10 @@ class DashBoard extends React.Component {
                            
                         </Col>
                         <Col>
-                                <Map center={[lat, long]} zoom={6}>
+                        <Card style={{'marginTop':'20px','height':'370px'}}>
+                            <Card.Header style={{'marginBottom':'12px'}}> <b> Location(s) on Map</b></Card.Header>
+
+                            <Map center={[lat, long]} zoom={6}>
                                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
                                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'/> {
                                     this.state.coodLabell.map((item) => 
@@ -169,7 +172,9 @@ class DashBoard extends React.Component {
                                         </div>
                                     </Popup>
                                     </Marker>)} 
-                                </Map>                     
+                                </Map>                 
+                        </Card>
+                                   
                         </Col>
                     </Row>
                 </Container>
@@ -189,7 +194,8 @@ class DashBoard extends React.Component {
                     onSearchChange={
                         this.handleSearchChange} />
 
-            <Park text={this.state.searchText} />
+            <Park text={this.state.searchText}   
+                  onSearchChange={this.handleSearchChange} />
 
        </React.Fragment>
     )

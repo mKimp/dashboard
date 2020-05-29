@@ -19,7 +19,14 @@ class Navigation extends React.Component {
 
     }
     handleTextChange(e) {
-        this.props.onTextChange(e.target.value);
+        const text1 = e.target.value //.charAt(0).toUpperCase() + e.target.value.slice(1);
+        const array_text = text1.split(' ');
+        const pre_result = array_text.map((item) => {let x = item.charAt(0).toUpperCase(); let y = x + item.slice(1); return y})
+        let result = pre_result.join();
+
+       
+        this.props.onTextChange(result.replace(",", " "));
+       // this.props.onTextChange(e.target.value);
         // this.setState({text:e.target.value})
     }
 
@@ -51,7 +58,6 @@ class Navigation extends React.Component {
                                     this.handleTextChange
                                 }/>
                     <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button> 
-
                 </Form> 
                 </Navbar.Collapse>
             </Navbar>

@@ -1,17 +1,22 @@
 import React from 'react';
 import {Modal, Alert, Button} from 'react-bootstrap'
 
-class AlertDismissible extends React.Component {
+class AlertDismissibleForPark extends React.Component {
     constructor(props){
         super(props)
         this.state = ({show:true, setShow:true})
         
         this.handleClose = this.handleClose.bind(this)
         this.handleShow = this.handleShow.bind(this)
+        this.resetPage = this.resetPage.bind(this);
 
+    }
+    resetPage() {
+        this.props.onSearchChange();
     }
     handleClose(){
         this.setState({show:false})
+        this.resetPage()
     }
     handleShow(){
         this.setState({show:true})
@@ -24,8 +29,8 @@ class AlertDismissible extends React.Component {
               </Modal.Header>
               <Modal.Body>{this.props.message}</Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={this.handleClose} href="/">
-                  Back to Main Page
+                <Button variant="secondary" onClick={this.handleClose}>
+                  Back to DashBoard
                 </Button>
        
               </Modal.Footer>
@@ -34,4 +39,4 @@ class AlertDismissible extends React.Component {
     }
 }
   
-export default AlertDismissible
+export default AlertDismissibleForPark
