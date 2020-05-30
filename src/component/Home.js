@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Home.css'
 
+//When the app is loaded at the first time
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
         this.props.onSubmitChange();
     }
 
+    //handle the submit on the form
     render() { 
         return (
             <React.Fragment>

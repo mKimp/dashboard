@@ -9,19 +9,17 @@ class Mapp extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
             totaldata: this.props.totaldata
         }
     }
 
     render() {
 
-        const aa = data.map((item) => item.states[0].title)
-        console.log(aa)
         let newArray = []
         const current = data.filter(function (item) {
             return item.states[0].title === this.props.searchName
         })
+        //create the array for coordinates that are responding to each park
         current.forEach((element) => {
             const title = element.title
             const cood = element.coordinates
@@ -32,8 +30,7 @@ class Mapp extends React.Component {
             newArray.push(newData)
 
         })
-        console.log(newArray[0].cood)
-
+        
         const lat = newArray[0].cood[0];
         const long = newArray[0].cood[1];
 

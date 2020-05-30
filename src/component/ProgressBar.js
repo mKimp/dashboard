@@ -1,7 +1,8 @@
 import React from 'react';
-
 import Spinner from 'react-bootstrap/Spinner'
 import './ProgressBar.css'
+
+// just to let the user know they need to wait for the data to load
 class Progress extends React.Component {
 
     render() {

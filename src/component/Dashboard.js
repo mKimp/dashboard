@@ -27,7 +27,6 @@ class DashBoard extends React.Component {
             totalData: this.props.totaldata,
             searchText:'',
             isLoaded: false,
-
         })
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -48,29 +47,32 @@ class DashBoard extends React.Component {
     }
 
     render() {
- 
+        //get the lat and long of the first national park in the array of parks to get the center for the map
         const lat = this.state.coodLabell[0].cood[0];
         const long = this.state.coodLabell[0].cood[1];
         const parkLength = this.state.parkLabel.length;
 
+        //Park Sizes
         const parkData = new Array(this.state.parkSize.length)
         for (let i = 0; i < this.state.parkSize.length; ++ i) {
-            const comma = this.state.parkSize[i].replace(/,/g, '');
+            const comma = this.state.parkSize[i].replace(/,/g, ''); //Since the data inside the dataset has ',' inside the integer, I have to replace it, so the chart can work properly
             const result = parseFloat(comma)
             parkData[i] = result;
         }
 
+        //Park Visitors 
         const visitors = new Array(this.state.parkVisitors.length)
         for (let i = 0; i < this.state.parkVisitors.length; ++ i) {
-            const comma = this.state.parkVisitors[i].replace(/,/g, '');
+            const comma = this.state.parkVisitors[i].replace(/,/g, '');//Since the data inside the dataset has ',' inside the float, I have to replace it, so the chart can work properly
             const result = parseInt(comma,10)
             visitors[i] = result
         }
 
+        // The dashboard is shown, user has not used the "Searching bar yet", all the charts and map are using cards in bootstraps
         if (!this.state.isSearched){
         return (
             <React.Fragment>
-                <div>
+                <div> 
                 <Navigation  textChange={
                             this.state.searchText
                         }
@@ -81,7 +83,7 @@ class DashBoard extends React.Component {
                             this.handleSubmit
                         }/>
                 </div>
-                <div style={{"backgroundColor":"DarkOliveGreen", "display": "flex", "justifyContent":"center", "alignItems":"center"}}>
+                <div style={{"backgroundColor":"DarkOliveGreen", "display": "flex", "justifyContent":"center", "alignItems":"center"}}> 
                 <Container>
                     <Row>
                         <Col>
@@ -158,11 +160,10 @@ class DashBoard extends React.Component {
                 </footer>
             </React.Fragment>
             )} 
+    //when the user used the "Search bar", return the information from the search
     else{
-
         return(
             <React.Fragment>
-              
             <NavigationNoSearch  
                     onSearchChange={
                         this.handleSearchChange} />

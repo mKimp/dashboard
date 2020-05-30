@@ -4,6 +4,7 @@ import Alert from 'react-bootstrap/Alert'
 import {Container} from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 
+//this componenet is used multiple times in the park.js, so I make it another component to make things clean. Show the information about the park
 class Jumbo extends React.Component{
     constructor(props){
         super(props)

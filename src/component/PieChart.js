@@ -2,6 +2,7 @@ import React from 'react';
 import {Doughnut} from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels'
 
+//pie chart used for percentage to compare state 's parks to total us national parks
 class PieChart extends React.Component {
 
     render() {
@@ -12,7 +13,6 @@ class PieChart extends React.Component {
             parkLength,
             total
         ]
-        console.log(compareData)
         const chartData = {
             labels: [
                 this.props.searchName + " 's Parks",

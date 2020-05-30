@@ -1,6 +1,7 @@
 import React from 'react';
 import {Bar} from 'react-chartjs-2';
 
+//THis is the chart of size of each national park
 class Chart extends React.Component {
     constructor(props) {
         super(props)
@@ -38,27 +39,16 @@ class Chart extends React.Component {
         }
     }
     render() {
-        console.log(this.props.parkSize)
         return (
             <div className="chart">
                 <Bar data={
                         this.state.chartData
                     }
                     options={
-                        {scales: {
-                            yAxes: [{
-                                ticks: {
-                                    callback: function(value, index, values) {
-                                        return '$' + value;
-                                    }
-                                }
-                            }]
-                        }},
                         {
-                            plugins: {
+                            plugins: { 
                                 datalabels: {
-                                   display: false,
-                                
+                                   display: false //I dont want the labels on this chart
                             },
                         },
                             legend: {

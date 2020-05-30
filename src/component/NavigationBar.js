@@ -3,6 +3,7 @@ import {Nav, Navbar} from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './Nav.css'
 
+// This navigation bar is used for the dashboard page
 class Navigation extends React.Component {
     constructor(props) {
         super(props)

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Nav, Navbar} from 'react-bootstrap';
 
+//This nav bar is used for the displaying information about a park
 class NavigationNoSearch extends React.Component {
     constructor(props){
         super(props)

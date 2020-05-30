@@ -30,10 +30,10 @@ class App extends React.Component {
     }
     handleSubmit(e) {
 
-        const parkData = this.props.data.map((item) => item.states[0].title)
+        const parkData = this.props.data.map((item) => item.states[0].title) //filter out the states that have national parks
         const search = this.state.searchText;
         this.state.usstates.forEach(element => {
-            if(element === search){
+            if(element === search){ //check if the user input the correct state name
                 this.setState({correctstateName:true})
             }
         });
@@ -41,24 +41,24 @@ class App extends React.Component {
 
         parkData.forEach(element => {
             if (element === search) {
-                const parks = this.props.data.filter(function (item) {
+                const parks = this.props.data.filter(function (item) { //return back all the national parks info
                     return item.states[0].title === search
                 }).map(function (item) {
                     return item.title
                 })
-                const parkSize = this.props.data.filter(function (item) {
+                const parkSize = this.props.data.filter(function (item) {  //return back the sizes of all national parks
                     return item.states[0].title === search
                 }).map(function (item) {
                     return item.area.acres
                 })
 
-                const visitors = this.props.data.filter(function (item) {
+                const visitors = this.props.data.filter(function (item) { // return back all the amount of visitors in the national parks
                     return item.states[0].title === search
                 }).map(function (item) {
                     return item.visitors
                 })
 
-                const cood = this.props.data.filter(function (item) {
+                const cood = this.props.data.filter(function (item) { //return back the coordinates of each national parks
                     return item.states[0].title === search
                 }).map(function (item) {
 
@@ -71,13 +71,13 @@ class App extends React.Component {
         });
 
         let newArray = []
-        const current = this.props.data.filter(function (item) {
+        const current = this.props.data.filter(function (item) { 
             return item.states[0].title === search
         })
-        current.forEach((element) => {
+        current.forEach((element) => { 
             const title = element.title
             const cood = element.coordinates
-            const newData = {
+            const newData = { //create the array of objects that contain coordinate, description, and established date of each national park for using in Map
                 "title": title,
                 "cood": [
                     cood.latitude, cood.longitude
@@ -97,6 +97,7 @@ class App extends React.Component {
         this.props.data.forEach(element => {
             ++ count;
         });
+        //The homepage is loaded at the first time
         if (!this.state.isLoaded && !this.state.hasResult) {
             return (
                 <div>
@@ -111,16 +112,16 @@ class App extends React.Component {
                         }/>
                 </div>
             )
-        } else if (this.state.isLoaded && !this.state.hasResult && !this.state.correctstateName) {
+        } else if (this.state.isLoaded && !this.state.hasResult && !this.state.correctstateName) { //the user input something but not one of the us states
 
             return (<AlertDismissible message={"You could misspell the state name?"}/> )
 
         } 
-        else if (this.state.isLoaded && this.state.correctstateName && !this.state.hasResult ) {
+        else if (this.state.isLoaded && this.state.correctstateName && !this.state.hasResult ) { // the user input correct name of a state but that state does not have national parks
            return (<AlertDismissible message={"Sorry, this state DOES NOT have any National Parks"}/> )
      }
         else {
-
+            //the state name is correct and that state has national parks, return Dashboard
             return (
                 <Dashboard dataLabel={
                         this.state.parkLabel

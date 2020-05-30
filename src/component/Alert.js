@@ -1,6 +1,7 @@
 import React from 'react';
 import {Modal, Button} from 'react-bootstrap'
 
+//Alert to handle the error that could happen in the homepage: enter the wrong state name, or the state does not have the national parks
 class AlertDismissible extends React.Component {
     constructor(props){
         super(props)

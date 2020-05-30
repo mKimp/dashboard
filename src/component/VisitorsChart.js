@@ -1,6 +1,7 @@
 import React from 'react';
 import {HorizontalBar} from 'react-chartjs-2';
 
+//this chart is for the amount of visitors in each park
 class VisitorChart extends React.Component {
     constructor(props) {
         super(props)
@@ -38,7 +39,6 @@ class VisitorChart extends React.Component {
         }
     }
     render() {
-        console.log(this.props.visitors)
         return (
             <div className="visitorChart">
                 <HorizontalBar data={
