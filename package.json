@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3000",
+  "homepage": "https://mkimp.github.io/dashboard/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -17,9 +18,7 @@
     "react-bootstrap": "^1.0.1",
     "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
-    "react-image-gallery": "^1.0.7",
     "react-leaflet": "^2.7.0",
-    "react-router-dom": "^5.1.2",
     "react-scripts": "^1.1.1"
   },
   "scripts": {
