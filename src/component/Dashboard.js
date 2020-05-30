@@ -11,7 +11,6 @@ import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 import PieChart from './PieChart'
 import Park from './Park';
 import Card from 'react-bootstrap/Card'
-import CardColumns from 'react-bootstrap/CardColumns'
 
 class DashBoard extends React.Component {
     constructor(props) {
@@ -47,33 +46,9 @@ class DashBoard extends React.Component {
     handleSearchChange (){
         this.setState({isSearched:false})
     }
-    
-    /*
-    componentDidMount() {
-        let url = "https://developer.nps.gov/api/v1/parks?parkCode=&stateCode=&q=" + this.state.searchText + "&api_key=ggkV9uIryYjb4jyp0qeVrwCwE5rObHy68Il8hhKD"
-        fetch(url).then(res => res.json()).then((result) => {
-            this.setState({isLoaded: true, items: result.data})
-        }, (error) => {
-            this.setState({isLoaded: true, error})
-        })
-    }*/
+
     render() {
-
-        // console.log(this.state.coodLabell[0].title + "" + this.state.searchName)
-        /*       let newArray = []
-        const current = this.props.data.filter(function (item) {
-                    return item.states[0].title === this.props.searchName
-        })
-        current.forEach((element) => {
-            const title = element.title
-            const cood = element.coordinates
-            const  newData = {"title": title, "cood": [cood.latitude, cood.longitude]}; 
-            newArray.push(newData)
-
-        })
-        console.log(newArray[0].cood) */
-        
-        
+ 
         const lat = this.state.coodLabell[0].cood[0];
         const long = this.state.coodLabell[0].cood[1];
         const parkLength = this.state.parkLabel.length;
@@ -88,11 +63,9 @@ class DashBoard extends React.Component {
         const visitors = new Array(this.state.parkVisitors.length)
         for (let i = 0; i < this.state.parkVisitors.length; ++ i) {
             const comma = this.state.parkVisitors[i].replace(/,/g, '');
-            const result = parseInt(comma)
-            visitors[i] = result;
+            const result = parseInt(comma,10)
+            visitors[i] = result
         }
-
-        const {error, isLoaded, items} = this.state;
 
         if (!this.state.isSearched){
         return (
@@ -198,14 +171,8 @@ class DashBoard extends React.Component {
                   onSearchChange={this.handleSearchChange} />
 
        </React.Fragment>
-    )
+    )}
     }
-    
-
-    }
-    
-
-
 }
 
 export default DashBoard

@@ -3,9 +3,7 @@ import React from 'react';
 import Spinner from 'react-bootstrap/Spinner'
 import './ProgressBar.css'
 class Progress extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+
     render() {
         return (
             <div className="Progress">

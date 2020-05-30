@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bar, HorizontalBar} from 'react-chartjs-2';
+import {HorizontalBar} from 'react-chartjs-2';
 
 class VisitorChart extends React.Component {
     constructor(props) {
@@ -45,7 +45,6 @@ class VisitorChart extends React.Component {
                         this.state.chartData
                     }
                     options={
-                        
                         {
                             title: {
                                 display: this.props.searchName,
@@ -61,8 +60,8 @@ class VisitorChart extends React.Component {
                                 datalabels: {
                                    display: false,
                                 
-                            },
-                        },
+                            }
+                        }
                     } }/>
             </div>
         )

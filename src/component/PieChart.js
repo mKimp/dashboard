@@ -3,9 +3,6 @@ import {Doughnut} from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels'
 
 class PieChart extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const totalPark = this.props.totalData;
@@ -33,7 +30,6 @@ class PieChart extends React.Component {
                         'rgba(255, 99, 132, 1)',
                         'rgba(75, 192, 192, 1)',
                     ]
-
                 }
             ]
         }

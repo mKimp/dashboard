@@ -18,27 +18,11 @@ class App extends React.Component {
             items: [],
             alerts: [],
             hasResult: false,
-            modalIsOpen: true,
             correctstateName: false,
             usstates:["Alaska", "Alabama", "Arkansas", "American Samoa", "Arizona", "California", "Colorado", "Connecticut", "District of Columbia", "Delaware", "Florida", "Georgia", "Guam", "Hawaii", "Iowa", "Idaho", "Illinois", "Indiana", "Kansas", "Kentucky", "Louisiana", "Massachusetts", "Maryland", "Maine", "Michigan", "Minnesota", "Missouri", "Mississippi", "Montana", "North Carolina", "North Dakota", "Nebraska", "New Hampshire", "New Jersey", "New Mexico", "Nevada", "New York", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Puerto Rico", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Virginia", "Virgin Islands", "Vermont", "Washington", "Wisconsin", "West Virginia", "Wyoming"],
-            visible: true
-
-
         }
         this.handleTextChange = this.handleTextChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.toggleModal = this.toggleModal.bind(this)
-    }
-    toggleModal() {
-
-        this.setState({
-            modalIsOpen: !this.state.modalIsOpen
-        })
-    }
-
-    toggleAlert (){
-        this.setState({visible: !this.state.visible})
-
     }
 
     handleTextChange(text) {
@@ -49,14 +33,14 @@ class App extends React.Component {
         const parkData = this.props.data.map((item) => item.states[0].title)
         const search = this.state.searchText;
         this.state.usstates.forEach(element => {
-            if(element == search){
+            if(element === search){
                 this.setState({correctstateName:true})
             }
         });
         this.setState({isLoaded: true})
 
         parkData.forEach(element => {
-            if (element == search) {
+            if (element === search) {
                 const parks = this.props.data.filter(function (item) {
                     return item.states[0].title === search
                 }).map(function (item) {
@@ -104,10 +88,7 @@ class App extends React.Component {
             newArray.push(newData)
         })
         this.setState({
-            coodLabell: [
-                ...this.state.coodLabell,
-                ... newArray
-            ]
+            coodLabell: [...this.state.coodLabell,...newArray]
         })
     }
 
@@ -159,8 +140,7 @@ class App extends React.Component {
                     coodLabell={
                         this.state.coodLabell
                     }
-                    totaldata
-                    ={count}/>
+                    totaldata={count}/>
             )
         }
     }
