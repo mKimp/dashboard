@@ -120,8 +120,7 @@ class DashBoard extends React.Component {
                                 parkLabel={this.state.parkLabel}
                                 searchName={this.state.searchName}/>
                             </Card.Body>
-                        </Card>
-                           
+                        </Card>  
                         </Col>
                         <Col>
                         <Card style={{'marginTop':'20px','height':'370px'}}>
@@ -154,7 +153,7 @@ class DashBoard extends React.Component {
                     </Row>
                 </Container>
                 </div>
-                <footer style={{"backgroundColor": "whitesmoke", "textAlign":"center"}}>
+                <footer style={{ "textAlign":"center"}}>
                     <p>Author: Kim Ma</p>
                     <p><a href="mailto:pkm@pdx.edu">pkm@pdx.edu</a></p>
                 </footer>

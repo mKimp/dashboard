@@ -22,6 +22,8 @@
     "react-scripts": "^1.1.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "env-cmd -f .env.development react-scripts start",
     "build": "env-cmd -f .env.development react-scripts build",
     "test": "env-cmd .env.development react-scripts test",
@@ -41,5 +43,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.0.0"
   }
 }

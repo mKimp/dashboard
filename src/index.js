@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import data from './component/data/data.json';
 import App from './component/App';
 
