@@ -2,8 +2,11 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
+  "engines":{
+    "node": "11.14.0",
+    "npm": "6.7.0"
+  },
   "proxy": "http://localhost:3000",
-  "homepage": "https://mkimp.github.io/dashboard/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -22,11 +25,9 @@
     "react-scripts": "^1.1.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "env-cmd -f .env.development react-scripts start",
-    "build": "env-cmd -f .env.development react-scripts build",
-    "test": "env-cmd .env.development react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,8 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "gh-pages": "^3.0.0"
   }
 }

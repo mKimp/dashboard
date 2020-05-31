@@ -3,6 +3,7 @@ import HomePage from './Home';
 import Dashboard from './Dashboard';
 import AlertDismissible from './Alert'
 
+//Parent pgae, use to process data and distribute to dashboard
 class App extends React.Component {
     constructor(props) {
         super(props);
