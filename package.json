@@ -6,7 +6,6 @@
     "node": "11.14.0",
     "npm": "6.7.0"
   },
-  "proxy": "http://agile-ridge-26387.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
