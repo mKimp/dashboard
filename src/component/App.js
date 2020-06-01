@@ -106,6 +106,7 @@ class App extends React.Component {
                     <HomePage textChange={
                             this.state.searchText
                         }
+                        usstates ={this.state.usstates}
                         onTextChange={
                             this.handleTextChange
                         }
