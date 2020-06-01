@@ -2,7 +2,7 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://agile-ridge-26387.herokuapp.com/",
+  "proxy": "http://localhost:3000",
   "engines": {
     "node": "11.14.0",
     "npm": "6.7.0"
@@ -16,6 +16,7 @@
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
     "env-cmd": "^10.1.0",
+    "http-proxy-middleware": "^1.0.4",
     "jquery": "^1.9.1",
     "leaflet": "^1.6.0",
     "popper.js": "^1.16.0",
