@@ -24,7 +24,6 @@ class HomePage extends React.Component {
                 return y
             })
         let result = pre_result.join();
-        console.log(result.replace(searchRegExp, " "))
         this.props.onTextChange(result.replace(searchRegExp, " "))
         
     }
@@ -44,10 +43,11 @@ class HomePage extends React.Component {
                     </h1>
                     <div>
             <select id="dropdown" onChange={this.handleTextChange}>
+                <option value="N/A">US States</option>
                 {usstates.map((item)=><option value={item}>{item}</option>)}
             </select>
           </div>
-  <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
+            <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
 
                 </div>
             </React.Fragment>

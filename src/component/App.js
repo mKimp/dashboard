@@ -98,7 +98,6 @@ class App extends React.Component {
         this.props.data.forEach(element => {
             ++ count;
         });
-        console.log(count)
         //The homepage is loaded at the first time
         if (!this.state.isLoaded && !this.state.hasResult) {
             return (
