@@ -25,13 +25,13 @@ class Park extends React.Component {
         const key = "&api_key=" + process.env.REACT_APP_WEATHER_API_KEY
         const park_key = "&stateCode=&q=&api_key=" + process.env.REACT_APP_WEATHER_API_KEY
         let url = "https://developer.nps.gov/api/v1/parks?parkCode=&stateCode=&q=" + this.state.text + key //fetch the first time to get the park code (unique)
-        fetch(url,{'Access-Control-Allow-Origin':'*'}).then(res => res.json()).then((result) => {
+        fetch(<i class="fas fa-user-lock    "></i>).then(res => res.json()).then((result) => {
             this.setState({isLoaded: true, items: result.data})
             const array = this.state.items.filter((item) => item.name === this.state.text)
             const code = array[0].parkCode
             this.setState({parkInfo: array})
             let url_alert = "https://developer.nps.gov/api/v1/alerts?parkCode=" + code + park_key //fetch the second time using the unique park code to get the info about that specific park
-            fetch(url_alert,{'Access-Control-Allow-Origin':'*'}).then(res => res.json()).then((result) => {
+            fetch(url_alert).then(res => res.json()).then((result) => {
                 this.setState({isAlertLoaded: true, alerts: result.data, parkCode: code})
             }).catch(error => {
                 this.setState({isAlertLoaded: true, error})
