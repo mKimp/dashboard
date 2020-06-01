@@ -15,8 +15,8 @@ class PieChart extends React.Component {
         ]
         const chartData = {
             labels: [
-                this.props.searchName + " 's Parks",
-                "Total Parks in the United States"
+                this.props.searchName + " 's Parks" + ":" + this.props.parkLength,
+                "Total Parks in the United States: "  + totalPark
             ],
             datasets: [
                 {

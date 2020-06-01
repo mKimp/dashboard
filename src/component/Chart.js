@@ -31,8 +31,7 @@ class Chart extends React.Component {
                             'rgba(153, 102, 255, 1)',
                             'rgba(255, 159, 64, 1)',
                             'rgba(159, 159, 159, 1)',
-                        ]
-
+                        ],
                     }
                 ]
             }
@@ -56,6 +55,7 @@ class Chart extends React.Component {
                                 position: "top"
                             }
                         }
+ 
                         }
                     />
             </div>
