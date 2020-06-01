@@ -17,7 +17,6 @@ class Jumbo extends React.Component{
     render(){
         
         const park = this.state.park;
-        console.log(park)
         const fee = this.state.fee;
         return(  <Jumbotron style={
             {

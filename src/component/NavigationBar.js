@@ -25,7 +25,6 @@ class Navigation extends React.Component {
         const searchRegExp = new RegExp(search, 'g')
         const pre_result = array_text.map((item) => {let x = item.charAt(0).toUpperCase(); let y = x + item.slice(1); return y})
         let result = pre_result.join();      
-        console.log(result.replace(searchRegExp, " "))
         this.props.onTextChange(result.replace(searchRegExp, " "))
     }
 
