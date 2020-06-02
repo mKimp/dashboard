@@ -11,7 +11,12 @@ Gather the information about National Parks in a US state, based on the user 's 
 
 ## Libraries used in this App
 
-- Bootstrap
-- Chart.js
-- Chartjs-plugin-datalabels
-- Leaflet
+- ReactJS
+- HTML, CSS
+- React-ChartJS
+- React-Bootstrap
+- React-Leaflet
+- Chartjs-plugin-datalables
+- NPS (National Park Service API)
+- DataSet (https://data.world/kevinnayar/us-national-parks)
+- Thanks to Leigh Halliday for instructions on React-Leaflet.Referece to: https://blog.logrocket.com/how-to-use-react-leaflet/
