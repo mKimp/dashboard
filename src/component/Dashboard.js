@@ -2,7 +2,6 @@ import React from 'react';
 import Chart from './Chart';
 import Navigation from './NavigationBar'
 import NavigationNoSearch from './NavigationNoSearch'
-
 import {Container} from 'react-bootstrap';
 import {Col, Row} from "react-bootstrap";
 import VisitorChart from './VisitorsChart'

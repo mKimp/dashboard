@@ -13,19 +13,7 @@ class HomePage extends React.Component {
 
     }
     handleTextChange(e) {
-        const text1 = e.target.value
-        const search = ',';
-        const searchRegExp = new RegExp(search, 'g')
-        const array_text = text1.split(" ");
-
-        const pre_result = array_text.map((item) => {
-            let x = item.charAt(0).toUpperCase();
-            let y = x + item.slice(1);
-                return y
-            })
-        let result = pre_result.join();
-        this.props.onTextChange(result.replace(searchRegExp, " "))
-        
+    this.props.onTextChange (e.target.value)
     }
 
     handleSubmit(e) {
