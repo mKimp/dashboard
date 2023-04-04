@@ -14,7 +14,7 @@ let myTree = new AutoCompleter();
 
 export function createWordsTree() {
   const titleOfParks = extractParkName();
-  titleOfParks.forEach((word) => myTree.insert(word));
+  titleOfParks.forEach((word) => myTree.insert(word.toLowerCase()));
 }
 
 export function searchPark(park) {

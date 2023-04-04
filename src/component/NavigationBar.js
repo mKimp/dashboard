@@ -2,6 +2,7 @@ import React from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import "./Nav.css";
+import { searchPark, createWordsTree } from "./helper/extractParkName";
 
 // This navigation bar is used for the dashboard page
 class Navigation extends React.Component {
@@ -12,23 +13,37 @@ class Navigation extends React.Component {
       isLoaded: false,
       items: [],
       isSearch: false,
+      parksTitle: [],
     };
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.resetPage = this.resetPage.bind(this);
+    this.searchName = this.searchName.bind(this);
   }
+
+  componentDidMount() {
+    createWordsTree();
+  }
+
+  searchName(name) {
+    this.props.onTextChange(name);
+  }
+
   handleTextChange(e) {
-    const text1 = e.target.value;
-    const array_text = text1.split(" ");
-    const search = ",";
-    const searchRegExp = new RegExp(search, "g");
-    const pre_result = array_text.map((item) => {
-      let x = item.charAt(0).toUpperCase();
-      let y = x + item.slice(1);
-      return y;
-    });
-    let result = pre_result.join();
-    this.props.onTextChange(result.replace(searchRegExp, " "));
+    const text1 = e.target.value.toLowerCase();
+    console.log(text1);
+    // const array_text = text1.split(" ");
+    // const search = ",";
+    // const searchRegExp = new RegExp(search, "g");
+    // const pre_result = array_text.map((item) => {
+    //   let x = item.charAt(0).toUpperCase();
+    //   let y = x + item.slice(1);
+    //   return y;
+    // });
+    // let result = pre_result.join();
+    // this.props.onTextChange(result.replace(searchRegExp, " "));
+    this.props.onTextChange(text1);
+    this.setState({ parksTitle: searchPark(text1) });
   }
 
   handleSubmit(e) {
@@ -64,18 +79,50 @@ class Navigation extends React.Component {
             <Nav.Link href='/'></Nav.Link>
           </Nav>
           <Form inline onSubmit={this.handleSubmit} id='mySearchForm'>
-            <Form.Control
-              type='text'
-              placeholder='Searching A Park ...'
-              className=' mr-sm-2'
-              onChange={this.handleTextChange}
-            />
-            <button
-              className='btn btn-outline-success my-2 my-sm-0'
-              type='submit'
-            >
-              Submit
-            </button>
+            <div className='auto-complete-container'>
+              <input
+                type='text'
+                placeholder='Searching A Park ...'
+                className='input-search'
+                onChange={this.handleTextChange}
+                value={this.props.textChange}
+              />
+
+              <button className='submit-btn' type='submit'>
+                Submit
+              </button>
+              {/* {console.log(this.state.parksTitle)}
+            {this.state.parksTitle.map((park) => {
+              <div>{park.title}</div>;
+            })} */}
+              <div
+                className={
+                  searchPark(this.props.textChange).length > 0
+                    ? "drop-down"
+                    : ""
+                }
+              >
+                {searchPark(this.props.textChange).map((park) => (
+                  <div
+                    className='option-value'
+                    value={park}
+                    onClick={(e) => this.searchName(park)}
+                  >
+                    {park}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* <select onChange={this.handleTextChange}>
+              <option value='N/A'>US States</option>
+
+              {searchPark(this.props.textChange).map((park) => (
+                <option value={park} onClick={(e) => console.log(park)}>
+                  {park}
+                </option>
+              ))}
+            </select> */}
           </Form>
         </Navbar.Collapse>
       </Navbar>

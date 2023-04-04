@@ -37,12 +37,12 @@ class DashBoard extends React.Component {
   }
 
   handleTextChange(text) {
-    const parkName = text.charAt(0).toUpperCase() + text.slice(1);
-    console.log("TTLAJADJLAJD ", parkName);
-    console.log(searchPark(parkName));
-    // this.setState({ searchText: text1 });
+    // const parkName = text.charAt(0).toCase() + text.slice(1);
+    this.setState({ searchText: text });
   }
+
   handleSubmit(e) {
+    console.log(this.state.searchText);
     this.setState({ isSearched: true });
   }
   handleSearchChange() {
