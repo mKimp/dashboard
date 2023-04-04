@@ -29,8 +29,10 @@ class HomePage extends React.Component {
           <div>
             <select id='dropdown' onChange={this.handleTextChange}>
               <option value='N/A'>US States</option>
-              {usstates.map((item) => (
-                <option value={item}>{item}</option>
+              {usstates.map((item, index) => (
+                <option key={index + item} value={item}>
+                  {item}
+                </option>
               ))}
             </select>
           </div>

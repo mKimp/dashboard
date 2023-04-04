@@ -23,33 +23,21 @@ class Navigation extends React.Component {
 
   componentDidMount() {
     createWordsTree();
+    this.props.onTextChange("");
   }
 
   searchName(name) {
     this.props.onTextChange(name);
+    this.handleSubmit();
   }
 
   handleTextChange(e) {
     const text1 = e.target.value.toLowerCase();
-    console.log(text1);
-    // const array_text = text1.split(" ");
-    // const search = ",";
-    // const searchRegExp = new RegExp(search, "g");
-    // const pre_result = array_text.map((item) => {
-    //   let x = item.charAt(0).toUpperCase();
-    //   let y = x + item.slice(1);
-    //   return y;
-    // });
-    // let result = pre_result.join();
-    // this.props.onTextChange(result.replace(searchRegExp, " "));
     this.props.onTextChange(text1);
     this.setState({ parksTitle: searchPark(text1) });
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    document.getElementById("mySearchForm").reset();
-
+  handleSubmit() {
     this.props.onSubmitChange();
   }
 
@@ -87,42 +75,19 @@ class Navigation extends React.Component {
                 onChange={this.handleTextChange}
                 value={this.props.textChange}
               />
-
-              <button className='submit-btn' type='submit'>
-                Submit
-              </button>
-              {/* {console.log(this.state.parksTitle)}
-            {this.state.parksTitle.map((park) => {
-              <div>{park.title}</div>;
-            })} */}
-              <div
-                className={
-                  searchPark(this.props.textChange).length > 0
-                    ? "drop-down"
-                    : ""
-                }
-              >
-                {searchPark(this.props.textChange).map((park) => (
+              <div className={"drop-down"}>
+                {searchPark(this.props.textChange).map((park, index) => (
                   <div
                     className='option-value'
                     value={park}
                     onClick={(e) => this.searchName(park)}
+                    key={`${index + park}`}
                   >
                     {park}
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* <select onChange={this.handleTextChange}>
-              <option value='N/A'>US States</option>
-
-              {searchPark(this.props.textChange).map((park) => (
-                <option value={park} onClick={(e) => console.log(park)}>
-                  {park}
-                </option>
-              ))}
-            </select> */}
           </Form>
         </Navbar.Collapse>
       </Navbar>

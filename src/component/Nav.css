@@ -16,8 +16,12 @@ button.submit-btn:hover {
 .drop-down {
   border: 1px solid green;
   padding: 6px 12px;
+  height: 70px;
+  overflow: scroll;
+  margin-top: 5px;
 }
 
 .input-search {
   padding: 6px 12px;
+  width: 100%;
 }
