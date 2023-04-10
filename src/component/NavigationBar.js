@@ -83,7 +83,7 @@ class Navigation extends React.Component {
                     onClick={(e) => this.searchName(park)}
                     key={`${index + park}`}
                   >
-                    {park}
+                    {park[0].toUpperCase() + park.slice(1)}
                   </div>
                 ))}
               </div>

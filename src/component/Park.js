@@ -22,7 +22,6 @@ class Park extends React.Component {
   }
 
   componentDidMount() {
-    console.log("PARK ", this.state.text);
     const key = "&api_key=ThL6LhmMngSDUgnZbVsmvfh3s3qitlieCWKAhEag";
     const park_key =
       "&stateCode=&q=&api_key=ThL6LhmMngSDUgnZbVsmvfh3s3qitlieCWKAhEag";
@@ -34,7 +33,6 @@ class Park extends React.Component {
       .then((res) => res.json())
       .then((result) => {
         this.setState({ isLoaded: true, items: result.data });
-        console.log(result.data);
         const array = this.state.items.filter(
           (item) => item.name.toLowerCase() === this.state.text
         );

@@ -41,8 +41,7 @@ class DashBoard extends React.Component {
     this.setState({ searchText: text });
   }
 
-  handleSubmit(e) {
-    console.log(this.state.searchText);
+  handleSubmit() {
     this.setState({ isSearched: true });
   }
   handleSearchChange() {
