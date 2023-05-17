@@ -32,7 +32,7 @@ button.submit-btn:hover {
   width: 100%;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 559px) {
   #blocker {
     display: none;
   }
