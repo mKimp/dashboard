@@ -107,10 +107,12 @@ class Park extends React.Component {
                     <Carousel.Item>
                       {
                         <img
-                          className='d-block w-100'
+                          className='d-block'
                           alt='park'
                           style={{
                             height: "650px",
+                            objectFit: "cover",
+                            width: "100%",
                           }}
                           src={images[0].url}
                         />
@@ -150,10 +152,12 @@ class Park extends React.Component {
                     <Carousel.Item>
                       {
                         <img
-                          className='d-block w-100'
+                          className='d-block'
                           alt='park'
                           style={{
                             height: "650px",
+                            objectFit: "cover",
+                            width: "100%",
                           }}
                           src={images[0].url}
                         />
@@ -162,10 +166,12 @@ class Park extends React.Component {
                     <Carousel.Item>
                       {
                         <img
-                          className='d-block w-100'
+                          className='d-block'
                           alt='park'
                           style={{
                             height: "650px",
+                            objectFit: "cover",
+                            width: "100%",
                           }}
                           src={images[1].url}
                         />
@@ -198,10 +204,12 @@ class Park extends React.Component {
                   <Carousel.Item>
                     {
                       <img
-                        className='d-block w-100'
+                        className='d-block'
                         alt='park'
                         style={{
                           height: "650px",
+                          objectFit: "cover",
+                          width: "100%",
                         }}
                         src={images[0].url}
                       />
@@ -210,10 +218,12 @@ class Park extends React.Component {
                   <Carousel.Item>
                     {
                       <img
-                        className='d-block w-100'
+                        className='d-block'
                         alt='park'
                         style={{
                           height: "650px",
+                          objectFit: "cover",
+                          width: "100%",
                         }}
                         src={images[1].url}
                       />
@@ -222,10 +232,12 @@ class Park extends React.Component {
                   <Carousel.Item>
                     {
                       <img
-                        className='d-block w-100'
+                        className='d-block'
                         alt='park'
                         style={{
                           height: "650px",
+                          objectFit: "cover",
+                          width: "100%",
                         }}
                         src={images[2].url}
                       />

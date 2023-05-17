@@ -47,7 +47,7 @@ class Navigation extends React.Component {
   }
   render() {
     return (
-      <Navbar expand='lg' id='navbarr'>
+      <Navbar id='navbarr'>
         <Navbar.Brand>
           {" "}
           <a className='navbar-brand' href='/'>
@@ -59,11 +59,11 @@ class Navigation extends React.Component {
               alt='logo'
             ></img>
           </a>
-          DashBoard NATIONAL PARKS{" "}
+          <span id='span-logo'>NATIONAL PARKS </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
-          <Nav className='mr-auto'>
+          <Nav className='mr-auto' id='blocker'>
             <Nav.Link href='/'></Nav.Link>
           </Nav>
           <Form inline onSubmit={this.handleSubmit} id='mySearchForm'>

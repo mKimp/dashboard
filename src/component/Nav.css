@@ -1,6 +1,12 @@
 #navbarr {
   border-style: ridge;
   border-color: whitesmoke;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#span-logo {
+  font-weight: bold;
 }
 
 button.submit-btn {
@@ -24,4 +30,10 @@ button.submit-btn:hover {
 .input-search {
   padding: 6px 12px;
   width: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+  #blocker {
+    display: none;
+  }
 }

@@ -48,7 +48,7 @@ class Jumbo extends React.Component {
                   {park[0].addresses[0].postalCode}
                 </p>
                 <p>
-                  <b>Fee</b>: ${fee.cost ? fee.cost : ""}. {fee.description}{" "}
+                  <b>Fee</b>: ${fee?.cost ? fee?.cost : ""}. {fee?.description}{" "}
                 </p>
 
                 <p>
